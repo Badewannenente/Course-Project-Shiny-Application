@@ -1,0 +1,41 @@
+
+---
+title: "Calculator Pitch Presentation"
+author: "Steffen Kapke"
+date: "September 2018"
+output: ioslides_presentation
+---
+
+## The Question
+
+How much memory is required to store this data?
+
+Beyond 128 bytes, R will ask for memory from the operating system in multiples of 8 bytes. With large datasets and "small" laptops, this could lead to problems.
+
+
+## The Goal 
+
+The goal of this simple Memory Calculator is to help beginners in R to predict how much memory you'll need for a given dataset **before** you load it into R. 
+It provides information about how R's memory management handles different classes and lets you adjust for the bytes coefficient.
+
+## The Principle
+
+Number of columns x (40 + Number of rows x bytes coeffiecient)
+
+```{r}
+library(pryr)
+## Example df with 3 numeric variables and bytes coef of 8
+df <- data.frame(x = rnorm(1e6), y = rnorm(1e6), z = rnorm(1e6))
+## Calculator memory size
+ncol(df)*(40 + nrow(df)*8)
+## actual memory size
+object_size(df)
+```
+Note: Every vector with length 0 occupies 40 bytes of memory.
+
+## The Source
+
+Unfortunatly, details of R's memory management are not documented in a single place. Information provided for this application came from the memory chapter of the book
+**Advanced R by Hadley Wickham**
+
+<http://adv-r.had.co.nz/memory.html>
