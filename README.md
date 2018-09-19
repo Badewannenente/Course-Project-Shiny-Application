@@ -2,6 +2,9 @@
 
 This project is a peer-graded assignment in the course "Developing Data Products, part of the "Data Science" Specialization on Coursera from the Johns Hopkins University.
 
+Link to the app on shiny.io:
+https://badewannenente.shinyapps.io/Memory_calculator/
+
 
 Background
 
